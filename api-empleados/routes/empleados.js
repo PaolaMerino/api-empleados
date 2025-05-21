@@ -22,6 +22,12 @@ router.get('/:id', async (req, res) => {
   res.json(empleado);
 });
 
+router.get('/', async (req, res) => {
+  const filtros = req.query; // Esto permite recibir ?Campo=valor
+  const empleados = await Empleado.find(filtros).select('-__v');
+  res.json(empleados);
+});
+
 router.put('/:id', async (req, res) => {
   const empleado = await Empleado.findByIdAndUpdate(req.params.id, req.body, { new: true });
   res.json(empleado);
