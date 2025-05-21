@@ -20,5 +20,6 @@ const EmpleadoSchema = new mongoose.Schema({
 EmpleadoSchema.index({ Estado: 1 });
 EmpleadoSchema.index({ Cargo: 1 });
 EmpleadoSchema.index({ Sueldo: 1 });
+EmpleadoSchema.index({ DUI: 1, Estado: 1 });
 
 module.exports = mongoose.model('Empleado', EmpleadoSchema);
